@@ -1,0 +1,24 @@
+.card{
+    width: 25%;
+    border: none;
+}
+
+.btn:focus{
+    box-shadow: none;
+}
+
+#login{
+    width: 30%;
+}
+
+#signup{
+    width: 35%;
+}
+#signup:hover{
+    transform: scale(1.07);
+    transition: transform .6s;
+}
+
+.alert{
+    width: 25%;
+} 

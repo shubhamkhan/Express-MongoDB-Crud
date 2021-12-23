@@ -1,0 +1,46 @@
+<div class="modal fade" id="insert_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="/dashboard/insert" method="post">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Item</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-floating">
+                                <input type="text" name="itemname" class="form-control" required>
+                                <label class="form-label">Item Name</label>
+                            </div>
+
+                            <div class="form-floating mt-3">
+                                <input type="text" name="address" class="form-control" required>
+                                <label class="form-label">Address</label>
+                            </div>
+
+                            <div class="form-floating mt-3">
+                                <input type="text" name="price" class="form-control" required>
+                                <label class="form-label">Price</label>
+                            </div>
+
+                            <div class="form-floating mt-3">
+                                <input type="text" name="time" class="form-control" required>
+                                <label class="form-label">Time</label>
+                            </div>
+
+                            <div class="form-floating mt-3">
+                                <input type="text" name="rating" class="form-control" required>
+                                <label class="form-label">Rating</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-sm btn-success">Add</button>
+                </div>     
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <%- include('include/_bootstrap')  %>
+
+</head>
+<body>
+
+    <%- include('include/_header')  %>
+
+    <div class="container">
+        <button class="btn btn-sm btn-primary my-2" id="additem" data-bs-toggle="modal" data-bs-target="#insert_modal">Add Item</button>
+        <table class="table">
+            <thead class="text-center">
+              <tr>
+                <th scope="col">Item Name</th>
+                <th scope="col">Address</th>
+                <th scope="col">Price</th>
+                <th scope="col">Time</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+
+                <% for(let i=0; i<restaurant.length; i++) { %>
+                    
+                <tr>
+                    <td scope="col">
+                        <%= restaurant[i].name %> 
+                    </td>
+                    <td scope="col">
+                        <%= restaurant[i].address %> 
+                    </td>
+                    <td scope="col" class="text-center">
+                        <%= restaurant[i].price %> 
+                    </td>
+                    <td scope="col" class="text-center">
+                        <%= restaurant[i].time %> 
+                    </td>
+                    <td scope="col" class="text-center">
+                        <%= restaurant[i].rating %> 
+                    </td>
+                    <td scope="col" class="text-center">
+                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#edit_modal<%= restaurant[i]._id %>">Edit</button>
+                        <button class="btn btn-sm btn-danger mx-2"><a class="text-white" style="text-decoration: none;" href="/dashboard/delete/<%= restaurant[i]._id %>">Delete</a></button>
+                    </td>
+                </tr>
+
+                <div class="modal fade" id="edit_modal<%= restaurant[i]._id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <form action="/dashboard/<%= restaurant[i]._id %>" method="post">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Update Item</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-floating">
+                                                <input type="text" name="name" class="form-control" value="<%= restaurant[i].name %>" required>
+                                                <label class="form-label">Item Name</label>
+                                            </div>
+                
+                                            <div class="form-floating mt-3">
+                                                <input type="text" name="address" class="form-control" value="<%= restaurant[i].address %>" required>
+                                                <label class="form-label">Address</label>
+                                            </div>
+                
+                                            <div class="form-floating mt-3">
+                                                <input type="text" name="price" class="form-control" value="<%= restaurant[i].price %>" required>
+                                                <label class="form-label">Price</label>
+                                            </div>
+                
+                                            <div class="form-floating mt-3">
+                                                <input type="text" name="time" class="form-control" value="<%= restaurant[i].time %>" required>
+                                                <label class="form-label">Time</label>
+                                            </div>
+                
+                                            <div class="form-floating mt-3">
+                                                <input type="text" name="rating" class="form-control" value="<%= restaurant[i].rating %>" required>
+                                                <label class="form-label">Rating</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-sm btn-success">Update</button>
+                                </div>     
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <% } %>
+            </tbody>
+        </table>
+        <%- include('include/_insertmodal') %>
+    </div>
+</body>
+</html>

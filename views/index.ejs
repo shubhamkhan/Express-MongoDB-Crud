@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+
+    <%- include('include/_bootstrap') %>
+    
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+
+    <%- include('include/_header') %>
+
+    <div class="container mt-5 d-flex flex-column justify-content-center align-items-center">
+
+        <% if(success !='') { %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <%= success %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% } %>
+        <% if(error !='') { %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <%= error %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% } %>
+        <% if(warning !='') { %>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <%= warning %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% } %>
+        <% if(message !='') { %>
+        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            <%= message %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <% } %>
+
+        <div class="card shadow">
+            <div class="card-body">
+                <form action="/login" method="post">
+                    <div class="col-md-12 mt-3">
+                        <div class="form-floating">
+                            <input type="text" name="username" id="username" class="form-control" placeholder="Email"
+                                required>
+                            <label class="form-label">Email</label>
+                        </div>
+                        <div class="form-floating mt-4">
+                            <input type="password" name="password" id="password" class="form-control"
+                                placeholder="Password" required>
+                            <label class="form-label">Password</label>
+                        </div>
+                    </div>
+                    <div class="row d-flex mt-5">
+                        <button type="submit" class="btn btn-sm btn-outline-primary mx-auto" id="login">LOG IN</button>
+                    </div>
+                </form>
+                <div class="row d-flex justify-content-center text-center mb-0 mt-3">
+                    <span class="mb-0">Don't Have Account ? &nbsp;</span>
+                    <button class="btn signup-btn text-success" id="signup" data-bs-toggle="modal"
+                        data-bs-target="#signup_modal">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%- include('include/_signupmodal') %>
+
+    <script src="/js/script.js"></script>
+
+</body>
+
+</html>
